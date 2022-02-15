@@ -64,12 +64,10 @@ public class InternationalSystemUnits {
      */
 
     public double mphMeters(double mph) {
-        double m = 0.0;
         return m = (mph*(1600/1)*(1/3600));
     }
 
     public double feetMeters(double feet) {
-        double m = 0.0;
         return m = feet * .3048;
     }
 
@@ -80,7 +78,6 @@ public class InternationalSystemUnits {
      */
 
     public double kmhMeters(double khm) {
-        double m = 0.0;
         return m = (khm * (1000/1) * (1/3600));
     }
 }

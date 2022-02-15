@@ -25,7 +25,8 @@ public class Main {
          * Main Menu
          *
          */
-        while (menuInput == 0) {
+        while (menuInput != 0) {
+            System.out.println("Convert Units to ISU: 1");
             /*
              *
              * Conversion, imperial units and metric to International System of Units
