@@ -40,11 +40,4 @@ public class Main {
         }
     }
 
-    // method for change in velocity
-
-    // method for change in time
-
-    // method for acceleration
-
-
 }

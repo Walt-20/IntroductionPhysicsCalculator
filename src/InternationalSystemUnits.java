@@ -1,18 +1,60 @@
 public class InternationalSystemUnits {
+
+    // attributes
+    private double feet;
     private double mph;
+    private double khm;
     private double m;
 
-    public InternationalSystemUnits() {
+    // Default Constructor
+    public InternationalSystemUnits(double feet, double mph, double khm, double m) {
 
+        this.feet = feet;
+        this.mph = mph;
+        this.khm = khm;
+        this.m = m;
     }
 
-    //getters
-    public getMeterPerSec(double mph) {
-        return this.mph;
+    /*
+     *
+     * Setters
+     *
+     */
+    public void setFeet(double feet) {
+        this.feet = feet;
     }
-    //setter
-    public void setMetersPerSecond() {
-        mphMeters(mph);
+
+    public void setMph(double mph) {
+        this.mph = mph;
+    }
+
+    public void setKhm(double khm) {
+        this.khm = khm;
+    }
+
+    public void setM(double m) {
+        this.m = m;
+    }
+
+    /*
+     *
+     * Getters
+     *
+     */
+    public double getFeet() {
+        return feet;
+    }
+
+    public double getMph() {
+        return mph;
+    }
+
+    public double getKhm() {
+        return khm;
+    }
+
+    public double getM() {
+        return m;
     }
 
     /*
@@ -21,12 +63,14 @@ public class InternationalSystemUnits {
      *
      */
 
-    public static void mphMeters(double mph) {
-        double m = (mph*(1600/1)*(1/3600));
+    public double mphMeters(double mph) {
+        double m = 0.0;
+        return m = (mph*(1600/1)*(1/3600));
     }
 
-    public static void feetMeters(double feet) {
-        double m = feet * .3048;
+    public double feetMeters(double feet) {
+        double m = 0.0;
+        return m = feet * .3048;
     }
 
     /*
@@ -35,7 +79,8 @@ public class InternationalSystemUnits {
      *
      */
 
-    public static void kmhMeters(double khm) {
-        double m = (khm * (1000/1) * (1/3600));
+    public double kmhMeters(double khm) {
+        double m = 0.0;
+        return m = (khm * (1000/1) * (1/3600));
     }
 }
