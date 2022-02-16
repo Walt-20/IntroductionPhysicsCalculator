@@ -21,7 +21,7 @@ public class Main {
         public void runner() {
             printHeader();
             while (!exit) {
-                printHeader();
+                printMenu();
                 int userInput = getInput();
                 performAction(userInput);
             }
@@ -67,4 +67,31 @@ public class Main {
             }
         }
 
+        private void convertUnits() {
+            System.out.println("0 - Exit to Main Menu");
+            System.out.println("1 - MPH to Meters");
+            System.out.println("2 - KHM to Meters");
+            System.out.println("3 - Feet to Meters");
+            System.out.println("4 - Centimeters to Meters");
+
+            int menuInput = getInput();
+
+            switch(menuInput) {
+                case 0:
+                    break;
+                case 1:
+                    mphToM();
+                case 2:
+                case 3:
+                case 4:
+                default:
+            }
+        }
+
+        private double mphToM() {
+            double m = 0.0;
+            System.out.println("Enter Miles Per Hour to convert");
+            int userInput = getInput();
+            return m = (userInput/1) * (1609.34/1) * (1/3600); //TODO add method to print out value
+        }
 }
