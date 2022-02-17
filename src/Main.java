@@ -22,16 +22,16 @@ public class Main {
             printHeader();
             while (!exit) {
                 printMenu();
-                int userInput = getInput();
+                int userInput = getMenuInput();
                 performAction(userInput);
             }
         }
 
         private void printHeader() {
-            System.out.println("**************************************************");
+            System.out.println("\n**************************************************");
             System.out.println("|           Physics Calculator                   |");
             System.out.println("|            Convert to ISU                      |");
-            System.out.println("**************************************************");
+            System.out.println("**************************************************\n");
         }
 
         private void printMenu() {
@@ -39,7 +39,7 @@ public class Main {
             System.out.println("1 - Convert to ISU");
         }
 
-        private int getInput() {
+        private int getMenuInput() {
             Scanner scr = new Scanner(System.in);
             int menuInput = -1;
             while (menuInput < 0) {
@@ -51,6 +51,13 @@ public class Main {
                 }
             }
             return menuInput;
+        }
+
+        private float getNumInput() {
+            Scanner num = new Scanner(System.in);
+            float numInput = -1;
+            numInput = Float.parseFloat(num.nextLine());
+            return numInput;
         }
 
         private void performAction(int menuInput) {
@@ -74,7 +81,7 @@ public class Main {
             System.out.println("3 - Feet to Meters");
             System.out.println("4 - Centimeters to Meters");
 
-            int menuInput = getInput();
+            int menuInput = getMenuInput();
 
             switch(menuInput) {
                 case 0:
@@ -88,10 +95,12 @@ public class Main {
             }
         }
 
-        private double mphToM() {
-            double m = 0.0;
+        private void mphToM() {
+            float m = 0;
+            float conversion = Float.parseFloat(".44704");
             System.out.println("Enter Miles Per Hour to convert");
-            int userInput = getInput();
-            return m = (userInput/1) * (1609.34/1) * (1/3600); //TODO add method to print out value
+            float numToConvert = getNumInput();
+            m = numToConvert * conversion;
+            System.out.println("Miles per Hour to Meters per Second: " + m + "\n");
         }
 }
