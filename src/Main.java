@@ -29,7 +29,9 @@ public class Main {
         }
 
         /*
+         *
          * print menu and headers
+         *
          */
 
         private void printIsuHeader() {
@@ -56,6 +58,12 @@ public class Main {
             System.out.println("2 - Vectors Calculator");
         }
 
+        /*
+         *
+         * getting user input
+         *
+         */
+
         private int getMenuInput() {
             Scanner scr = new Scanner(System.in);
             int menuInput = -1;
@@ -70,7 +78,14 @@ public class Main {
             return menuInput;
         }
 
-        private float getNumInput() {
+        private double getNumInputDouble() {
+            Scanner num = new Scanner(System.in);
+            double numInput = -1;
+            numInput = Double.parseDouble(num.nextLine());
+            return numInput;
+        }
+
+        private float getNumInputFloat() {
             Scanner num = new Scanner(System.in);
             float numInput = -1;
             numInput = Float.parseFloat(num.nextLine());
@@ -139,7 +154,7 @@ public class Main {
             float m = 0;
             float conversion = Float.parseFloat(".44704");
             System.out.println("Enter Miles Per Hour to convert");
-            float numToConvert = getNumInput();
+            float numToConvert = getNumInputFloat();
             m = numToConvert * conversion;
             System.out.println("Miles per Hour to Meters per Second: " + m + "\n");
         }
@@ -148,7 +163,7 @@ public class Main {
             float m = 0;
             float conversion = Float.parseFloat("0.277778");
             System.out.println("Enter Kilometers Per Hour to convert");
-            float numToConvert = getNumInput();
+            float numToConvert = getNumInputFloat();
             m = numToConvert * conversion;
             System.out.println("Kilometers per Hour to Meters per Second: " + m + "\n");
         }
@@ -157,7 +172,7 @@ public class Main {
             float m = 0;
             float conversion = Float.parseFloat("3.28084");
             System.out.println("Enter Feet to convert to Meters");
-            float numToConvert = getNumInput();
+            float numToConvert = getNumInputFloat();
             m = numToConvert * conversion;
             System.out.println("Feet to Meters: " + m + "\n");
         }
@@ -166,7 +181,7 @@ public class Main {
             float m = 0;
             float conversion = Float.parseFloat(".01");
             System.out.println("Enter Centimeters to convert to Meters");
-            float numToConvert = getNumInput();
+            float numToConvert = getNumInputFloat();
             m = numToConvert * conversion;
             System.out.println("Centimeters to Meters: " + m + "\n");
         }
@@ -201,12 +216,8 @@ public class Main {
         }
 
         private void vectorVariableFind() {
-            float[][] vector = new float[2][2];
-            for (int i = 0; i < vector.length; i++) {
-                for (int j = 0; j < vector[i].length; j++) {
-                    System.out.println("Enter elements example: 5 4 b 3");
-                }
-            }
+            double numInput = getNumInputDouble();
+
         }
 
 }
