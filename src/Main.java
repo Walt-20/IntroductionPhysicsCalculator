@@ -11,6 +11,8 @@ import java.util.Scanner;
 public class Main {
 
     boolean exit;
+    boolean convertToMain;
+    boolean vectorToMain;
 
     public static void main(String[] args) {
 
@@ -19,7 +21,6 @@ public class Main {
     }
 
         public void runner() {
-            printHeader();
             while (!exit) {
                 printMenu();
                 int userInput = getMenuInput();
@@ -27,16 +28,32 @@ public class Main {
             }
         }
 
-        private void printHeader() {
+        /*
+         * print menu and headers
+         */
+
+        private void printIsuHeader() {
             System.out.println("\n**************************************************");
             System.out.println("|           Physics Calculator                   |");
             System.out.println("|            Convert to ISU                      |");
             System.out.println("**************************************************\n");
         }
 
+        private void printVectorHeader() {
+            System.out.println("\n**************************************************");
+            System.out.println("|           Physics Calculator                   |");
+            System.out.println("|            Vector Calculator                   |");
+            System.out.println("**************************************************\n");
+        }
+
         private void printMenu() {
-            System.out.println("0 - to quit menu");
+            System.out.println("\n**************************************************");
+            System.out.println("|           Physics Calculator                   |");
+            System.out.println("|               Main Menu                        |");
+            System.out.println("**************************************************\n");
+            System.out.println("0 - Close Application");
             System.out.println("1 - Convert to ISU");
+            System.out.println("2 - Vectors Calculator");
         }
 
         private int getMenuInput() {
@@ -69,32 +86,52 @@ public class Main {
                 case 1:
                     convertUnits();
                     break;
+                case 2:
+                    vectorCalculator();
+                    break;
                 default:
-                    System.out.println("An unknown error has accured");
+                    System.out.println("An unknown error has occurred");
             }
         }
 
+        /*
+        *
+        * Conversion of units
+        *
+        */
+
         private void convertUnits() {
-            System.out.println("0 - Exit to Main Menu");
-            System.out.println("1 - MPH to Meters");
-            System.out.println("2 - KHM to Meters");
-            System.out.println("3 - Feet to Meters");
-            System.out.println("4 - Centimeters to Meters");
 
-            int menuInput = getMenuInput();
+            while (!convertToMain) {
 
-            switch(menuInput) {
-                case 0:
-                    break;
-                case 1:
-                    mphToM();
-                    break;
-                case 2:
-                    khmToM();
-                    break;
-                case 3:
-                case 4:
-                default:
+                printIsuHeader();
+
+                System.out.println("0 - Back to Main Menu");
+                System.out.println("1 - MPH to Meters");
+                System.out.println("2 - KHM to Meters");
+                System.out.println("3 - Feet to Meters");
+                System.out.println("4 - Centimeters to Meters");
+
+                int menuInput = getMenuInput();
+
+                switch (menuInput) {
+                    case 0:
+                        convertToMain = true;
+                        break;
+                    case 1:
+                        mphToM();
+                        break;
+                    case 2:
+                        khmToM();
+                        break;
+                    case 3:
+                        feetToM();
+                        break;
+                    case 4:
+                        cmToM();
+                        break;
+                    default:
+                }
             }
         }
 
@@ -115,4 +152,61 @@ public class Main {
             m = numToConvert * conversion;
             System.out.println("Kilometers per Hour to Meters per Second: " + m + "\n");
         }
+
+        private void feetToM() {
+            float m = 0;
+            float conversion = Float.parseFloat("3.28084");
+            System.out.println("Enter Feet to convert to Meters");
+            float numToConvert = getNumInput();
+            m = numToConvert * conversion;
+            System.out.println("Feet to Meters: " + m + "\n");
+        }
+
+        private void cmToM() {
+            float m = 0;
+            float conversion = Float.parseFloat(".01");
+            System.out.println("Enter Centimeters to convert to Meters");
+            float numToConvert = getNumInput();
+            m = numToConvert * conversion;
+            System.out.println("Centimeters to Meters: " + m + "\n");
+        }
+
+        /*
+         *
+         * Vector Calculation
+         *
+         */
+
+        private void vectorCalculator() {
+
+            while (!vectorToMain) {
+
+                printVectorHeader();
+
+                System.out.println("0 - Back to Main Menu");
+                System.out.println("1 - Finding a variables value when two vectors are perpendicular");
+
+                int menuInput = getMenuInput();
+
+                switch (menuInput) {
+                    case 0:
+                        vectorToMain = true;
+                        break;
+                    case 1:
+                        vectorVariableFind();
+                        break;
+                    default:
+                }
+            }
+        }
+
+        private void vectorVariableFind() {
+            float[][] vector = new float[2][2];
+            for (int i = 0; i < vector.length; i++) {
+                for (int j = 0; j < vector[i].length; j++) {
+                    System.out.println("Enter elements example: 5 4 b 3");
+                }
+            }
+        }
+
 }
