@@ -88,7 +88,10 @@ public class Main {
                     break;
                 case 1:
                     mphToM();
+                    break;
                 case 2:
+                    khmToM();
+                    break;
                 case 3:
                 case 4:
                 default:
@@ -102,5 +105,14 @@ public class Main {
             float numToConvert = getNumInput();
             m = numToConvert * conversion;
             System.out.println("Miles per Hour to Meters per Second: " + m + "\n");
+        }
+
+        private void khmToM() {
+            float m = 0;
+            float conversion = Float.parseFloat("0.277778");
+            System.out.println("Enter Kilometers Per Hour to convert");
+            float numToConvert = getNumInput();
+            m = numToConvert * conversion;
+            System.out.println("Kilometers per Hour to Meters per Second: " + m + "\n");
         }
 }
