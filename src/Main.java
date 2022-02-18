@@ -199,7 +199,8 @@ public class Main {
                 printVectorHeader();
 
                 System.out.println("0 - Back to Main Menu");
-                System.out.println("1 - Finding a variables value when two vectors are perpendicular");
+                System.out.println("1 - Velocity of x-component");
+                System.out.println("2 - Get Velocity from Components");
 
                 int menuInput = getMenuInput();
 
@@ -208,16 +209,40 @@ public class Main {
                         vectorToMain = true;
                         break;
                     case 1:
-                        vectorVariableFind();
+                        getVelocityOfXAndYComponent();
+                        break;
+                    case 2:
+                        getVelocityFromComponents();
                         break;
                     default:
                 }
             }
         }
 
-        private void vectorVariableFind() {
-            double numInput = getNumInputDouble();
+        private void getVelocityOfXAndYComponent() {
+            System.out.println("Enter your magnitude: ex 4.0");
+            double magnitude = getNumInputDouble();
+            System.out.println("Enter the degrees");
+            double theta = getNumInputDouble();
 
+            double xVelocity = magnitude * Math.cos(Math.toRadians(theta));
+            double roundUpX = (double) Math.round(xVelocity * 100) / 100;
+            double yVelocity = magnitude * Math.sin(Math.toRadians(theta));
+            double roundUpY = (double) Math.round(yVelocity * 100) / 100;
+            System.out.println("The velocity of the x and y components are: " + roundUpX + "m, " + roundUpY + "m" + "\n");
         }
+
+        private void getVelocityFromComponents() {
+            System.out.println("Enter your x-coordinate");
+            double xCoor = getNumInputDouble();
+            System.out.println("Enter your y-coordinate");
+            double yCoor = getNumInputDouble();
+
+            double velocity = Math.sqrt(((xCoor * xCoor) + (yCoor * yCoor)));
+            double velRoundUp = (double) Math.round(velocity * 100) / 100;
+            System.out.println("The Velocity of the x and y coordinates are: " + velRoundUp + "m\n");
+        }
+
+
 
 }
