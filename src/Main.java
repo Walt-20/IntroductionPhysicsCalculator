@@ -6,6 +6,7 @@
  */
 
 import java.lang.Math;
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Main {
@@ -126,6 +127,8 @@ public class Main {
                 System.out.println("2 - KHM to Meters");
                 System.out.println("3 - Feet to Meters");
                 System.out.println("4 - Centimeters to Meters");
+                System.out.println("5 - Multiplying two scientific numbers");
+                System.out.println("6 - Dividing two scientific numbers");
 
                 int menuInput = getMenuInput();
 
@@ -145,6 +148,12 @@ public class Main {
                     case 4:
                         cmToM();
                         break;
+                    case 5:
+                        multiplyTwoScientificNums();
+                        break;
+                    case 6:
+                        dividingTwoScientificNums();
+                        break;
                     default:
                 }
             }
@@ -156,7 +165,7 @@ public class Main {
             System.out.println("Enter Miles Per Hour to convert");
             float numToConvert = getNumInputFloat();
             m = numToConvert * conversion;
-            System.out.println("Miles per Hour to Meters per Second: " + m + "\n");
+            System.out.println("Miles per Hour to Meters per Second: " + m + "m/s\n");
         }
 
         private void khmToM() {
@@ -165,7 +174,7 @@ public class Main {
             System.out.println("Enter Kilometers Per Hour to convert");
             float numToConvert = getNumInputFloat();
             m = numToConvert * conversion;
-            System.out.println("Kilometers per Hour to Meters per Second: " + m + "\n");
+            System.out.println("Kilometers per Hour to Meters per Second: " + m + "m/s\n");
         }
 
         private void feetToM() {
@@ -174,7 +183,7 @@ public class Main {
             System.out.println("Enter Feet to convert to Meters");
             float numToConvert = getNumInputFloat();
             m = numToConvert * conversion;
-            System.out.println("Feet to Meters: " + m + "\n");
+            System.out.println("Feet to Meters: " + m + "m/s\n");
         }
 
         private void cmToM() {
@@ -183,7 +192,71 @@ public class Main {
             System.out.println("Enter Centimeters to convert to Meters");
             float numToConvert = getNumInputFloat();
             m = numToConvert * conversion;
-            System.out.println("Centimeters to Meters: " + m + "\n");
+            System.out.println("Centimeters to Meters: " + m + "m/s\n");
+        }
+
+        private void multiplyTwoScientificNums() {
+            float coefficientResult = 0;
+            float exponentResult = 0;
+            System.out.println("Enter your the first coefficient ex: 4.5");
+            float m1 = getNumInputFloat();
+            System.out.println("Enter your the first exponent ex: 12");
+            float exp1 = getNumInputFloat();
+            System.out.println("Enter your the second coefficient ex: 6.6");
+            float m2 = getNumInputFloat();
+            System.out.println("Enter your the second exponent ex: 4");
+            float exp2 = getNumInputFloat();
+
+            coefficientResult = (m1 * m2);
+            exponentResult = (exp1 + exp2);
+
+            BigDecimal decimalCoefficient = null;
+            if (coefficientResult > 10.0) {
+
+                // object to correct decimal places for scientific notation conversion
+                BigDecimal bd = new BigDecimal(coefficientResult);
+
+                // pointer to move n decimal places
+                int i = 1;
+                decimalCoefficient = bd.movePointLeft(i);
+
+                exponentResult++;
+
+            }
+
+            System.out.println("The product is: " + String.format("%.1f", decimalCoefficient) + "E" + ((int) (exponentResult)));
+        }
+
+        private void dividingTwoScientificNums() {
+            float coefficientResult = 0;
+            float exponentResult = 0;
+            System.out.println("Enter your the first coefficient ex: 4.5");
+            float m1 = getNumInputFloat();
+            System.out.println("Enter your the first exponent ex: 12");
+            float exp1 = getNumInputFloat();
+            System.out.println("Enter your the second coefficient ex: 6.6");
+            float m2 = getNumInputFloat();
+            System.out.println("Enter your the second exponent ex: 4");
+            float exp2 = getNumInputFloat();
+
+            coefficientResult = (m1 / m2);
+            exponentResult = (exp1 - exp2);
+
+            BigDecimal decimalCoefficient = null;
+            if (coefficientResult > 10.0) {
+
+                // object to correct decimal places for scientific notation conversion
+                BigDecimal bd = new BigDecimal(coefficientResult);
+
+                // pointer to move n decimal places
+                int i = 1;
+                decimalCoefficient = bd.movePointLeft(i);
+
+                exponentResult++;
+
+            }
+
+            System.out.println("The product is: " + String.format("%.1f", coefficientResult) + "E" + ((int) (exponentResult)));
         }
 
         /*
