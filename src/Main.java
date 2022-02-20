@@ -228,35 +228,33 @@ public class Main {
         }
 
         private void dividingTwoScientificNums() {
-            float coefficientResult = 0;
-            float exponentResult = 0;
+            double coefficientResult = 0.0;
+            double exponentResult = 0.0;
             System.out.println("Enter your the first coefficient ex: 4.5");
-            float m1 = getNumInputFloat();
+            double m1 = getNumInputDouble();
             System.out.println("Enter your the first exponent ex: 12");
-            float exp1 = getNumInputFloat();
+            double exp1 = getNumInputDouble();
             System.out.println("Enter your the second coefficient ex: 6.6");
-            float m2 = getNumInputFloat();
+            double m2 = getNumInputDouble();
             System.out.println("Enter your the second exponent ex: 4");
-            float exp2 = getNumInputFloat();
+            double exp2 = getNumInputDouble();
 
             coefficientResult = (m1 / m2);
             exponentResult = (exp1 - exp2);
 
             BigDecimal decimalCoefficient = null;
-            if (coefficientResult > 10.0) {
 
-                // object to correct decimal places for scientific notation conversion
-                BigDecimal bd = new BigDecimal(coefficientResult);
+            // object to correct decimal places for scientific notation conversion
+            BigDecimal bd = new BigDecimal(coefficientResult);
 
-                // pointer to move n decimal places
-                int i = 1;
-                decimalCoefficient = bd.movePointLeft(i);
+            // pointer to move n decimal places
+            int i = 1;
+            decimalCoefficient = bd.movePointRight(i);
 
-                exponentResult++;
+            exponentResult--;
 
-            }
 
-            System.out.println("The product is: " + String.format("%.1f", coefficientResult) + "E" + ((int) (exponentResult)));
+            System.out.println("The product is: " + String.format("%.2f", decimalCoefficient) + "E" + ((int) (exponentResult)));
         }
 
         /*
