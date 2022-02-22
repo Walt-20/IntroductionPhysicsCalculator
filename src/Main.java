@@ -116,10 +116,19 @@ public class Main {
         }
 
         private double getNumericalValue(String userInput) {
+            String north = "north";
+            String south = "south";
             double numericalOutput = 0.0;
             for (int i = 0; i < userInput.length(); i++) {
-                if (userInput.charAt(i) >= 65 && userInput.charAt(i) <= 122) {
-                    numericalOutput = Double.parseDouble(userInput.substring(0, i));
+                if (userInput.charAt(i) >= 48 && userInput.charAt(i) <= 57) {
+                    numericalOutput = Double.parseDouble(userInput.substring(0, i + 1));
+                }
+            }
+            for (int j = 0; j < userInput.length(); j++) {
+                if (userInput.equals(north)) {
+                    numericalOutput = numericalOutput * 1;
+                } else if (userInput.equals(south)) {
+                    numericalOutput = numericalOutput * -1;
                 }
             }
             return numericalOutput;
@@ -364,6 +373,7 @@ public class Main {
 
                 System.out.println("0 - Back to Main Menu");
                 System.out.println("1 - Average Velocity");
+                System.out.println("2 - Position in Time");
 
                 int menuInput = getMenuInput();
 
@@ -375,7 +385,7 @@ public class Main {
                         getAverageVelocity();
                         break;
                     case 2:
-                        solveForTime();
+                        solveForPosition();
                         break;
                     default:
                 }
@@ -385,7 +395,7 @@ public class Main {
         private void getAverageVelocity() {
             // formula average velocity = displacement s / change in time t
             double avgVelocity = 0.0;
-            System.out.println("Enter the displacement: [ex. 5 km north]");
+            System.out.println("Enter the displacement: [ex. 5km north]");
             String displacement = getStringInput();
             System.out.println("Enter the change in time: [ex. 1 hour]");
             String changeInTime = getStringInput();
@@ -398,8 +408,17 @@ public class Main {
             System.out.println("The Average Velocity is: " + avgVelocity);
         }
 
-        private void solveForTime() {
+        private void solveForPosition() {
+            // formula for time = initial velocity + initial position
+            System.out.println("Time in seconds: [ex. 4]");
+            double time = getNumInputDouble();
+            System.out.println("Initial Velocity in meters: [ex. 5.0]");
+            double velocity = getNumInputDouble();
+            System.out.println("Initial position in meters: [ex. 0.0]");
+            double position = getNumInputDouble();
 
+            double posAtTime = (velocity * time) + (position);
+            System.out.println("The postion at time: " + time + " is: " + posAtTime);
         }
 
 }
