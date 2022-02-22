@@ -14,6 +14,7 @@ public class Main {
     boolean exit;
     boolean convertToMain;
     boolean vectorToMain;
+    boolean kineticsBackToMain;
 
     public static void main(String[] args) {
 
@@ -34,6 +35,13 @@ public class Main {
          * print menu and headers
          *
          */
+
+    private void printKineticsHeader() {
+        System.out.println("\n**************************************************");
+        System.out.println("|           Physics Calculator                   |");
+        System.out.println("|           Kinetics Calculator                  |");
+        System.out.println("**************************************************\n");
+    }
 
         private void printIsuHeader() {
             System.out.println("\n**************************************************");
@@ -57,6 +65,7 @@ public class Main {
             System.out.println("0 - Close Application");
             System.out.println("1 - Convert to ISU");
             System.out.println("2 - Vectors Calculator");
+            System.out.println("3 - Kinetics in One Dimension");
         }
 
         /*
@@ -79,6 +88,12 @@ public class Main {
             return menuInput;
         }
 
+        /*
+         *
+         * Input methods
+         *
+         */
+
         private double getNumInputDouble() {
             Scanner num = new Scanner(System.in);
             double numInput = -1;
@@ -93,6 +108,23 @@ public class Main {
             return numInput;
         }
 
+        private String getStringInput() {
+            Scanner str = new Scanner(System.in);
+            String userInput = "";
+            userInput = str.nextLine();
+            return userInput;
+        }
+
+        private double getNumericalValue(String userInput) {
+            double numericalOutput = 0.0;
+            for (int i = 0; i < userInput.length(); i++) {
+                if (userInput.charAt(i) >= 65 && userInput.charAt(i) <= 122) {
+                    numericalOutput = Double.parseDouble(userInput.substring(0, i));
+                }
+            }
+            return numericalOutput;
+        }
+
         private void performAction(int menuInput) {
             switch (menuInput) {
                 case 0:
@@ -104,6 +136,9 @@ public class Main {
                     break;
                 case 2:
                     vectorCalculator();
+                    break;
+                case 3:
+                    kineticsIn1DCalculator();
                     break;
                 default:
                     System.out.println("An unknown error has occurred");
@@ -272,6 +307,7 @@ public class Main {
                 System.out.println("0 - Back to Main Menu");
                 System.out.println("1 - Velocity of x-component");
                 System.out.println("2 - Get Velocity from Components");
+                System.out.println("3 - Solving Linear Equations");
 
                 int menuInput = getMenuInput();
 
@@ -314,6 +350,56 @@ public class Main {
             System.out.println("The Velocity of the x and y coordinates are: " + velRoundUp + "m\n");
         }
 
+        /*
+         *
+         * Kinetics In One Dimension
+         *
+         */
 
+        private void kineticsIn1DCalculator() {
+
+            while (!kineticsBackToMain) {
+
+                printKineticsHeader();
+
+                System.out.println("0 - Back to Main Menu");
+                System.out.println("1 - Average Velocity");
+
+                int menuInput = getMenuInput();
+
+                switch (menuInput) {
+                    case 0:
+                        kineticsBackToMain = true;
+                        break;
+                    case 1:
+                        getAverageVelocity();
+                        break;
+                    case 2:
+                        solveForTime();
+                        break;
+                    default:
+                }
+            }
+        }
+
+        private void getAverageVelocity() {
+            // formula average velocity = displacement s / change in time t
+            double avgVelocity = 0.0;
+            System.out.println("Enter the displacement: [ex. 5 km north]");
+            String displacement = getStringInput();
+            System.out.println("Enter the change in time: [ex. 1 hour]");
+            String changeInTime = getStringInput();
+            // parse the string and change numerical input into double
+            double numericalS = getNumericalValue(displacement);
+            double numericalT = getNumericalValue(changeInTime);
+
+            avgVelocity = numericalS / numericalT;
+
+            System.out.println("The Average Velocity is: " + avgVelocity);
+        }
+
+        private void solveForTime() {
+
+        }
 
 }
