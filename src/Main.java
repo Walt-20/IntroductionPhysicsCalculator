@@ -373,7 +373,9 @@ public class Main {
 
                 System.out.println("0 - Back to Main Menu");
                 System.out.println("1 - Average Velocity");
-                System.out.println("2 - Position in Time");
+                System.out.println("2 - Position at Time");
+                System.out.println("3 - Solve for Time");
+                System.out.println("4 - Solve for Velocity");
 
                 int menuInput = getMenuInput();
 
@@ -386,6 +388,12 @@ public class Main {
                         break;
                     case 2:
                         solveForPosition();
+                        break;
+                    case 3:
+                        solveForTime();
+                        break;
+                    case 4:
+                        solveForVelocity();
                         break;
                     default:
                 }
@@ -419,6 +427,23 @@ public class Main {
 
             double posAtTime = (velocity * time) + (position);
             System.out.println("The postion at time: " + time + " is: " + posAtTime);
+        }
+
+        private void solveForTime() {
+            // formula to solve for time = velocity - initial velocity / acceleration
+            System.out.println("What is the initial velocity?");
+            double velO = getNumInputDouble();
+            System.out.println("What is the velocity?");
+            double velocity = getNumInputDouble();
+            System.out.println("What is the acceleration?");
+            double acc = getNumInputDouble();
+
+            double time = ((velocity - velO) / acc);
+            System.out.println("The time is: " + time);
+        }
+
+        private void solveForVelocity() {
+
         }
 
 }
