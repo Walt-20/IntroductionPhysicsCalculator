@@ -36,12 +36,12 @@ public class Main {
          *
          */
 
-    private void printKineticsHeader() {
-        System.out.println("\n**************************************************");
-        System.out.println("|           Physics Calculator                   |");
-        System.out.println("|           Kinetics Calculator                  |");
-        System.out.println("**************************************************\n");
-    }
+        private void printKineticsHeader() {
+            System.out.println("\n**************************************************");
+            System.out.println("|           Physics Calculator                   |");
+            System.out.println("|           Kinetics Calculator                  |");
+            System.out.println("**************************************************\n");
+        }
 
         private void printIsuHeader() {
             System.out.println("\n**************************************************");
